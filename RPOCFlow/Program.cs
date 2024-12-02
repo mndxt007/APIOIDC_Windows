@@ -9,6 +9,8 @@ var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
 var configuration = builder.Build();
 // Bind the configuration section to PublicClientApplicationOptions
+//https://learn.microsoft.com/en-us/entra/identity-platform/msal-client-applications
+
 var appConfig = new PublicClientApplicationOptions();
 appConfig.LogLevel = LogLevel.Info;
 appConfig.EnablePiiLogging = true;
@@ -28,3 +30,5 @@ Console.WriteLine(token.AccessToken);
 //make HTTP call to WebAPI:APIEndpoint
 var apiEndpoint = configuration["WebAPI:APIEndpoint"];
 await rpocApp.CallWebApiAndProcessResultASync(apiEndpoint, token.AccessToken);
+Console.WriteLine("Press any key to exit");
+Console.ReadKey();

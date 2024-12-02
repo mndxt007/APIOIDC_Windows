@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APIOIDCWindows.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer", Policy = "APIScope")]
     [ApiController]
     [Route("api/user")]
     [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]

@@ -2,10 +2,7 @@ using APIOIDCWindows;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authentication.Negotiate;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
+using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.OpenApi.Models;
@@ -54,7 +51,20 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("APIScope", policy =>
+    {
+        policy.RequireAssertion(context =>
+        {
+            var scopeClaim = context.User.FindFirst(ClaimConstants.Scope);
+            //Change the scope name as needed
+            return scopeClaim != null && scopeClaim.Value.Split(' ').Contains("Api");
+
+        });
+    });
+}
+);
 
 // Add Swagger and include security definitions
 builder.Services.AddSwaggerGen(setup =>
@@ -101,7 +111,7 @@ app.MapGet("/", async (HttpContext ctx) =>
 {
     var token = await ctx.GetTokenAsync("access_token");
     Debug.WriteLine(token);
-    return !string.IsNullOrEmpty(token) ? token : "No access token found";
+    return !string.IsNullOrEmpty(token) ? token : "No access token found, go to /login";
 });
 
 app.MapGet("/login", () =>
