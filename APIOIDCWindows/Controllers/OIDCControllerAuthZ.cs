@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APIOIDCWindows.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer", Policy = "APIScope")]
     [ApiController]
-    [Route("api/user")]
-    public class OIDCController : ControllerBase
+    [Route("api/userscope")]
+    public class OIDCControllerAuthZ : ControllerBase
     {
         
 

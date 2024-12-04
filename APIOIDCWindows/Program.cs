@@ -65,7 +65,7 @@ builder.Services.AddAuthorization(options =>
     });
 }
 );
-
+builder.Services.AddRequiredScopeAuthorization();
 // Add Swagger and include security definitions
 builder.Services.AddSwaggerGen(setup =>
 {
@@ -104,6 +104,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+
 app.MapControllers();
 
 // Example endpoints
@@ -119,5 +120,6 @@ app.MapGet("/login", () =>
         new AuthenticationProperties { RedirectUri = "/swagger" },
         authenticationSchemes: new List<string> { "MicrosoftOidc" }
     ));
+
 
 app.Run();

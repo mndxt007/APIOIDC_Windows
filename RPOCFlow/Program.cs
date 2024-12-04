@@ -29,6 +29,6 @@ Console.WriteLine(token.AccessToken);
 
 //make HTTP call to WebAPI:APIEndpoint
 var apiEndpoint = configuration["WebAPI:APIEndpoint"];
-await rpocApp.CallWebApiAndProcessResultASync(apiEndpoint, token.AccessToken);
+await Helper.CallWebApiAndProcessResultASync(apiEndpoint, token.AccessToken);
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();
