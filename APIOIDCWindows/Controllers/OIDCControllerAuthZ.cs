@@ -8,7 +8,7 @@ namespace APIOIDCWindows.Controllers
 {
     [Authorize(AuthenticationSchemes = "Bearer", Policy = "APIScope")]
     [ApiController]
-    [Route("api/userscope")]
+    [Route("api/user")]
     public class OIDCControllerAuthZ : ControllerBase
     {
         
