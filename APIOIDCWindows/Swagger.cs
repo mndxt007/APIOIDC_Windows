@@ -20,7 +20,7 @@ namespace APIOIDCWindows
             var controllerName = context.ApiDescription.ActionDescriptor.RouteValues["controller"];
 
             // Apply only to OIDCController
-            if (controllerName != "OIDC")
+            if (!controllerName.StartsWith("OIDC"))
                 return;
 
             // Add security requirement for JWT Bearer

@@ -33,7 +33,7 @@ builder.Services.AddAuthentication(options =>
     {
         oidcOptions.Scope.Add(scope);
     }
-    oidcOptions.Authority =  $"{config.Instance}/{config.TenantId}/v2.0/";
+    oidcOptions.Authority = $"{config.Instance}/{config.TenantId}/v2.0/";
     oidcOptions.ClientId = config.ClientId;
     oidcOptions.ClientSecret = config.ClientSecret;
 
