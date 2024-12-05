@@ -16,7 +16,7 @@ This is sample that demonstrates Windows Auth and JWTBearer auth together - [mnd
                 
     -   Use different authentication schemes in the controller - [Authorize with a specific scheme in ASP.NET Core | Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/limitingidentitybyscheme?view=aspnetcore-9.0)
         
-    -   Use enforce Authorization policies and token validation parameters for additional security (such as validating scopes)
+    -   Use Authorization policies and token validation parameters for additional security (such as validating scopes in User flows)
         
         -   [Verify scopes and app roles protected web API - Microsoft identity platform | Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity-platform/scenario-protected-web-api-verification-scope-app-roles?tabs=aspnetcore)
             
