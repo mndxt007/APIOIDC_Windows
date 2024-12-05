@@ -115,11 +115,13 @@ app.MapGet("/", async (HttpContext ctx) =>
     return !string.IsNullOrEmpty(token) ? token : "No access token found, go to /login";
 });
 
-app.MapGet("/login", () =>
-    Results.Challenge(
-        new AuthenticationProperties { RedirectUri = "/swagger" },
+app.MapGet("/login", (HttpContext context) =>
+{
+    var redirectUri = String.Concat(context.Request.PathBase, "/swagger");
+    return Results.Challenge(
+        new AuthenticationProperties { RedirectUri = redirectUri },
         authenticationSchemes: new List<string> { "MicrosoftOidc" }
-    ));
-
+    );
+});
 
 app.Run();
