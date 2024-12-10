@@ -21,6 +21,8 @@ This is sample that demonstrates Windows Auth and JWTBearer auth together - [mnd
         -   [Verify scopes and app roles protected web API - Microsoft identity platform | Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity-platform/scenario-protected-web-api-verification-scope-app-roles?tabs=aspnetcore)
             
         -   In the sample - [APIOIDC_Windows/APIOIDCWindows/Controllers/OIDCUserController.cs at master · mndxt007/APIOIDC_Windows](https://github.com/mndxt007/APIOIDC_Windows/blob/master/APIOIDCWindows/Controllers/OIDCUserController.cs) uses an Authorization policy to validate scope.
+        -   Another sample with Identity Web which uses "RequiredScope" attribute for validation of scopes - [APIOIDC_Windows/IdentityWebApi at master · mndxt007/APIOIDC_Windows](https://github.com/mndxt007/APIOIDC_Windows/tree/master/IdentityWebApi)
+
             
 
 Client flows for acquiring tokens:
