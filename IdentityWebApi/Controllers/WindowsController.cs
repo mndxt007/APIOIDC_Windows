@@ -8,7 +8,7 @@ namespace IdentityWebApi.Controllers
     [ApiController]
     public class WindowsController : ControllerBase
     {
-        //test using Windows Authentication - curl https://localhost:7036/api/windows
+        //test using Windows Authentication - curl https://localhost:7036/api/windows --negotiate
         [HttpGet]
         public IActionResult Get()
         {
